@@ -15,6 +15,8 @@ public class Ride {
     private Map<String, Double> destination;
     private RideStatus rideStatus;
     private int rideCapacity;
+    private double fare;
+    private boolean isPaid;
     private LocalDateTime rideCreatedOn;
     private LocalDateTime rideEndedOn;
 
@@ -74,6 +76,22 @@ public class Ride {
         this.rideCapacity = rideCapacity;
     }
 
+    public double getFare() {
+        return fare;
+    }
+
+    public void setFare(double fare) {
+        this.fare = fare;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
     public LocalDateTime getRideCreatedOn() {
         return rideCreatedOn;
     }
@@ -90,7 +108,7 @@ public class Ride {
         this.rideEndedOn = rideEndedOn;
     }
 
-    public Ride(long id, List<Rider> riders, Driver driver, Map<String, Double> startLocation, Map<String, Double> destination, RideStatus rideStatus, int rideCapacity) {
+    public Ride(long id, List<Rider> riders, Driver driver, Map<String, Double> startLocation, Map<String, Double> destination, RideStatus rideStatus, int rideCapacity, double fare, boolean isPaid, LocalDateTime rideCreatedOn) {
         this.id = id;
         this.riders = riders;
         this.driver = driver;
@@ -98,5 +116,8 @@ public class Ride {
         this.destination = destination;
         this.rideStatus = rideStatus;
         this.rideCapacity = rideCapacity;
+        this.fare = fare;
+        this.isPaid = isPaid;
+        this.rideCreatedOn = rideCreatedOn;
     }
 }

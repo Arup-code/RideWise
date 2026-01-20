@@ -2,6 +2,7 @@ package service;
 
 import enums.VehicleType;
 import exception.NoDriverFoundException;
+import factory.DriverFactory;
 import model.Driver;
 import model.Rider;
 
@@ -43,6 +44,33 @@ public class DriverService {
             throw new NoDriverFoundException("No drivers found for vehicle type: " + vehicleType);
         }
         return matchedDrivers;
+    }
+
+    // Register a new driver using DriverFactory and add to list
+    public Driver registerDriver(String firstName, String lastName, String phoneNumber, VehicleType vehicleType) {
+        Driver driver = DriverFactory.createDriver(firstName, lastName, phoneNumber, vehicleType);
+        this.drivers.add(driver);
+        return driver;
+    }
+
+    // Find driver by id
+    public Driver getDriverById(long id) {
+        for (Driver d : drivers) {
+            if (d.getId() == id) return d;
+        }
+        return null;
+    }
+
+    // Update driver availability
+    public void setDriverAvailability(long driverId, boolean available) {
+        Driver d = getDriverById(driverId);
+        if (d != null) d.setAvailable(available);
+    }
+
+    // Update driver current location
+    public void updateDriverLocation(long driverId, java.util.Map<String, Double> location) {
+        Driver d = getDriverById(driverId);
+        if (d != null) d.setCurrentLocation(location);
     }
 
 }
