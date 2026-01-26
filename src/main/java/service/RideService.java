@@ -104,6 +104,7 @@ public class RideService {
         if (!paymentStatus) return;
         FareReceipt fareReceipt = new FareReceipt(found.getId(), found.getFare(), LocalDateTime.now());
         fareReceipts.add(fareReceipt);
+        found.setPaid(true);
 
         // move ride from ASSIGNED to COMPLETED
         Set<Ride> assignedRides = rides.get(RideStatus.ASSIGNED);
