@@ -12,15 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 public class RideFactory {
-    public Ride createRide(Rider rider, Driver driver, Map<String, Double> startLocation, Map<String, Double> destination, double fare) {
+    public static Ride createRide(Rider rider, Map<String, Double> startLocation, Map<String, Double> destination, double fare) {
         return new Ride(
                 IdGenerator.nextId(),
-                List.of(rider),
-                driver,
+                rider,
                 startLocation,
                 destination,
                 RideStatus.ASSIGNED,
-                Helpers.calculateRideCapacity(driver.getVehicle().getVehicleType()),
                 fare,
                 false,
                 LocalDateTime.now()

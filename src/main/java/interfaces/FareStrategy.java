@@ -2,6 +2,8 @@ package interfaces;
 
 import model.Ride;
 
+import java.util.Map;
+
 public interface FareStrategy {
-    double calculateFare(Ride ride);
+    double calculateFare(Map<String, Double> startLocation, Map<String, Double> destination);
 }

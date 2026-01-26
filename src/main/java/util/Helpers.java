@@ -6,7 +6,14 @@ import java.util.Map;
 
 public class Helpers {
 
-    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    public static double calculateDistance(Map<String, Double> startLocation, Map<String, Double> destination) {
+        if (startLocation == null || destination == null) return 0.0;
+
+        double lat1 = startLocation.getOrDefault("latitude", 0.0);
+        double lon1 = startLocation.getOrDefault("longitude", 0.0);
+        double lat2 = destination.getOrDefault("latitude", 0.0);
+        double lon2 = destination.getOrDefault("longitude", 0.0);
+
         double lat1Rad = Math.toRadians(lat1);
         double lat2Rad = Math.toRadians(lat2);
         double lon1Rad = Math.toRadians(lon1);
@@ -42,5 +49,11 @@ public class Helpers {
                 "latitude", Constants.DUMMYLAT + latOffset,
                 "longitude", Constants.DUMMYLONG + lonOffset
         );
+    }
+
+    public static void printSection(String title) {
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("======== "+title+" ========");
+        System.out.println("------------------------------------------------------------------");
     }
 }

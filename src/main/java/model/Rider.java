@@ -18,4 +18,16 @@ public class Rider extends User {
         super(id, firstName, lastName, phoneNumber, accountCreatedOn);
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "Rider{" +
+                "id=" + getId() +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", accountCreatedOn=" + getAccountCreatedOn() +
+                ", location=" + location +
+                '}';
+    }
 }

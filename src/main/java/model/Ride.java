@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Ride {
     private long id;
-    private List<Rider> riders;
+    private Rider rider;
     private Driver driver;
     private Map<String, Double> startLocation;
     private Map<String, Double> destination;
@@ -26,14 +26,6 @@ public class Ride {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public List<Rider> getRiders() {
-        return riders;
-    }
-
-    public void setRiders(List<Rider> riders) {
-        this.riders = riders;
     }
 
     public Driver getDriver() {
@@ -108,16 +100,38 @@ public class Ride {
         this.rideEndedOn = rideEndedOn;
     }
 
-    public Ride(long id, List<Rider> riders, Driver driver, Map<String, Double> startLocation, Map<String, Double> destination, RideStatus rideStatus, int rideCapacity, double fare, boolean isPaid, LocalDateTime rideCreatedOn) {
+    public Rider getRider() {
+        return rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
+    }
+
+    public Ride(long id, Rider rider, Map<String, Double> startLocation, Map<String, Double> destination, RideStatus rideStatus, double fare, boolean isPaid, LocalDateTime rideCreatedOn) {
         this.id = id;
-        this.riders = riders;
-        this.driver = driver;
+        this.rider = rider;
         this.startLocation = startLocation;
         this.destination = destination;
         this.rideStatus = rideStatus;
-        this.rideCapacity = rideCapacity;
         this.fare = fare;
         this.isPaid = isPaid;
         this.rideCreatedOn = rideCreatedOn;
+    }
+
+    @Override
+    public String toString() {
+        return "Ride{" +
+                "id=" + id +
+                ", rider=" + rider.getFirstName() +
+                ", driver=" + driver.getFirstName() +
+                ", destination=" + destination +
+                ", rideStatus=" + rideStatus +
+                ", rideCapacity=" + rideCapacity +
+                ", fare=" + fare +
+                ", isPaid=" + isPaid +
+                ", rideCreatedOn=" + rideCreatedOn +
+                ", rideEndedOn=" + rideEndedOn +
+                '}';
     }
 }
